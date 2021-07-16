@@ -519,7 +519,10 @@ const fetch = (manager, handler, options, params) => {
     options.headers['Content-Length'] = data.length;
 
     const req = getProtocol(options).request(options, (response) => {
+      console.log(options);
+      console.log(params);
       if (response.statusCode < 200 || response.statusCode > 299) {
+        console.log(response.statusCode)
         return reject(new Error(response.statusCode + ':' + http.STATUS_CODES[ response.statusCode ]));
       }
       let json = '';
